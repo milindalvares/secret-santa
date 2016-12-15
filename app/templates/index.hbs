@@ -1,0 +1,7 @@
+{{#each model as |person|}}
+  {{#if person.hasDirtyAttributes}}
+    {{person-form model=person save-person=(route-action 'savePerson')}}
+  {{else}}
+    {{person-show model=person}}
+  {{/if}}
+{{/each}}
