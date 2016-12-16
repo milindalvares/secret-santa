@@ -2,10 +2,7 @@
   {{person-form model=model save-person=(action 'savePerson')}}
 {{else}}
     <b>{{model.name}}</b>
-    {{model.email}}
-    <b>{{model.assigned}}</b>
-    {{model.available}}
-    <i>{{model.cantDraw.name}}</i>
+    <i>Can't Draw: {{model.cantDraw.name}}</i>
   <button {{action "edit" model}}>Edit</button>
   <button {{action "delete" model}}>Delete</button>
   {{#if isSelectingAssociate}}

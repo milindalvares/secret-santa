@@ -1,4 +1,4 @@
-{{people-list model=model make-association=(route-action 'makeAssociation')}}
+{{people-list model=model.people}}
 
-<button {{action "randomize" model}}>Randomize</button>
-<button {{action "reset" model}}>Reset</button>
+<br / />
+{{person-form model=model.newPerson save-person=(route-action 'savePerson')}}

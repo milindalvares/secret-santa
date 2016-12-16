@@ -1,7 +1,6 @@
-{{#each model as |person|}}
-  {{#if person.isNew}}
-    {{person-form model=person save-person=(route-action 'savePerson')}}
-  {{else}}
-    {{person-show model=person save-person=(route-action 'savePerson') delete-person=(route-action 'deletePerson') select-person=(action 'selectPerson') isSelectingAssociate=isSelectingAssociate select-associate=(action 'selectAssociate')}}
-  {{/if}}
+{{#each savedPeople as |person|}}
+    {{person-show model=person save-person=(action 'savePerson') delete-person=(action 'deletePerson') select-person=(action 'selectPerson') isSelectingAssociate=isSelectingAssociate select-associate=(action 'selectAssociate')}}
 {{/each}}
+
+<button {{action "randomize" savedPeople}}>Randomize</button>
+<button {{action "reset" savedPeople}}>Reset</button>
