@@ -3,7 +3,7 @@ import Ember from 'ember';
 const { computed } = Ember;
 
 export default Ember.Component.extend({
-  savedPeople: computed('model', function() {
+  savedPeople: computed('model,model.@each', function() {
     return this.get('model').filterBy('name');
   }),
   actions: {
