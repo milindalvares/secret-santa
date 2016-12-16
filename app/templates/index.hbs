@@ -1,7 +1,4 @@
-{{#each model as |person|}}
-  {{#if person.hasDirtyAttributes}}
-    {{person-form model=person save-person=(route-action 'savePerson')}}
-  {{else}}
-    {{person-show model=person}}
-  {{/if}}
-{{/each}}
+{{people-list model=model make-association=(route-action 'makeAssociation')}}
+
+<button {{action "randomize" model}}>Randomize</button>
+<button {{action "reset" model}}>Reset</button>

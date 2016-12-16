@@ -1,5 +1,17 @@
-<p>
-  {{model.name}}
-  {{model.email}}
-  {{model.associate}}
-</p>
+{{#if isEditing}}
+  {{person-form model=model save-person=(action 'savePerson')}}
+{{else}}
+    <b>{{model.name}}</b>
+    {{model.email}}
+    <b>{{model.assigned}}</b>
+    {{model.available}}
+    <i>{{model.cantDraw.name}}</i>
+  <button {{action "edit" model}}>Edit</button>
+  <button {{action "delete" model}}>Delete</button>
+  {{#if isSelectingAssociate}}
+    <button {{action "selectAssociate" model}}>Select Associate</button>
+  {{else}}
+    <button {{action "selectPerson" model}}>Select Person</button>
+  {{/if}}
+
+{{/if}}

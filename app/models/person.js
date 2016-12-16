@@ -3,6 +3,7 @@ import DS from 'ember-data';
 export default DS.Model.extend({
   name: DS.attr('string'),
   email: DS.attr('string'),
-  associate: DS.attr('string'),
-  available: DS.attr('boolean')
+  assigned: DS.attr('string'),
+  available: DS.attr('boolean', { defaultValue: true }),
+  cantDraw: DS.belongsTo('person')
 });
