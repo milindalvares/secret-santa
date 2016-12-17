@@ -1,3 +1,4 @@
+<div class="container">
 {{#each model as |person|}}
   {{#if person.hasDirtyAttributes}}
     {{person-form model=person save-person=(route-action 'savePerson')}}
@@ -5,3 +6,6 @@
     {{person-show model=person}}
   {{/if}}
 {{/each}}
+<button type="button" name="button" class="btn btn-primary" {{ action 'sendMail' model}}> Send </button>
+
+</div>

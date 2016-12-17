@@ -10,7 +10,7 @@ export default Ember.Component.extend({
     },
     savePerson(person) {
       console.log('inovked');
-      this.get('add-person')(person)
+      this.get('add-person')(person);
     }
   }
 });

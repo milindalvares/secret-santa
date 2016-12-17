@@ -1,4 +1,15 @@
-{{input value=model.name}}
-{{input value=model.email}}
-{{input value=model.associate}}
-<button {{action "savePerson" model}}>Save Person</button>
+<div class="row">
+  <div class="cols-md-12">
+    <div class="panel panel-default">
+      <div class="panel-body">
+      {{input value=model.name classNames="form-control" placeholder="Name"}}
+      <br>
+      {{input value=model.email classNames="form-control" placeholder="Email"}}
+      <br>
+      {{input value=model.associate classNames="form-control" placeholder="Associates"}}
+      <br>
+      <button {{action "savePerson" model}} class="form-controll btn btn-default pull-right">Save Person</button>
+      </div>
+    </div>
+  </div>
+</div>
