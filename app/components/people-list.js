@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import randomColor from 'npm:randomcolor';
 
 const { computed, observer } = Ember;
 
@@ -22,9 +23,18 @@ export default Ember.Component.extend({
     selectAssociate(associate) {
       this.set('isSelectingAssociate', false);
       const selectedPerson = this.get('selectedPerson');
+      const color = randomColor();
 
-      selectedPerson.set('cantDraw', associate).save();
-      associate.set('cantDraw', selectedPerson).save();
+      selectedPerson.setProperties({
+          cantDraw: associate,
+          color: color
+      });
+      selectedPerson.save();
+      associate.setProperties({
+        cantDraw: selectedPerson,
+        color: color
+      });
+      associate.save();
     },
     deletePerson(person) {
       person.destroyRecord();
@@ -35,10 +45,6 @@ export default Ember.Component.extend({
     reset(people) {
       this._reset(people);
     },
-    makeAssociation(person, associate) {
-      person.set('cantDraw', associate);
-      associate.set('cantDraw', person);
-    }
   },
   _randomize(people) {
     this._reset(people);

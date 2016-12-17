@@ -1,6 +1,6 @@
 {{#if isSelectingAssociate}}
-  <button {{action "selectAssociate" model}} class="person-name">{{model.name}}</button>
+  <button {{action "selectAssociate" model}} class="person-name" style={{model.escapedStyle}}>{{model.name}}</button>
 {{else}}
-  <button {{action "selectPerson" model}} class="person-name">{{model.name}}</button>
+  <button {{action "selectPerson" model}} class="person-name" style={{model.escapedStyle}}>{{model.name}}</button>
 {{/if}}
 <button {{action "delete" model}} class="btn">Delete</button>

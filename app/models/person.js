@@ -1,4 +1,7 @@
 import DS from 'ember-data';
+import Ember from 'ember';
+
+const { computed } = Ember;
 
 export default DS.Model.extend({
   name: DS.attr('string'),
@@ -6,5 +9,10 @@ export default DS.Model.extend({
   assigned: DS.attr('string'),
   sortId: DS.attr('number'),
   available: DS.attr('boolean', { defaultValue: true }),
-  cantDraw: DS.belongsTo('person')
+  cantDraw: DS.belongsTo('person'),
+  color: DS.attr('string'),
+  escapedStyle: computed('color', function() {
+    const color = this.get('color');
+    return Ember.String.htmlSafe("color:" + color);
+  })
 });
