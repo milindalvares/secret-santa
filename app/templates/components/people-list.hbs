@@ -2,5 +2,5 @@
     {{person-show model=person save-person=(action 'savePerson') delete-person=(action 'deletePerson') select-person=(action 'selectPerson') isSelectingAssociate=isSelectingAssociate select-associate=(action 'selectAssociate')}}
 {{/each}}
 
-<button {{action "randomize" savedPeople}}>Randomize</button>
+<button {{action "randomize" savedPeople}}>Randomize and Send</button>
 <button {{action "reset" savedPeople}}>Reset</button>

@@ -1,10 +1,13 @@
 import Ember from 'ember';
 
-const { computed } = Ember;
+const { computed, observer } = Ember;
 
 export default Ember.Component.extend({
   savedPeople: computed('model,model.@each', function() {
     return this.get('model').filterBy('name');
+  }),
+  randomize: observer('model.@each,model.@each.cantDraw', function() {
+    this._randomize(this.get('savedPeople'));
   }),
   actions: {
     savePerson(person) {
@@ -28,7 +31,6 @@ export default Ember.Component.extend({
       person.destroyRecord();
     },
     randomize(people) {
-      people.filterBy('name')
       this._randomize(people);
     },
     reset(people) {
