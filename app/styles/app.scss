@@ -1,0 +1,56 @@
+@import 'reset';
+
+$white: #F7F5F6;
+
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background: #283442;
+  color: #3D403D;
+  font-family: "Nanum Brush Script", "Helvetica", sans-serif;
+}
+
+#main-title {
+  background: url('/images/logo.svg') no-repeat;
+  text-indent: -9999px;
+  width: 243px;
+  height: 82px;
+  margin: 200px auto 0px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.outer-container {
+  padding: 10px;
+  background: $white;
+}
+
+#snow {
+  background: url('/images/snow.svg') center top;
+  height: 100px;
+  width: 100%;
+  margin-top: -20px;
+}
+
+#trees {
+  background: url('/images/trees.svg') right 100px top no-repeat;
+  height: 230px;
+  width: 100%;
+  margin-top: -100px;
+}
+
+
+
+.person-name {
+  font-size: 24px;
+}
+
+.people-list {
+  text-align: center;
+}

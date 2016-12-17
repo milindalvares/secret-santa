@@ -3,11 +3,9 @@ import Ember from 'ember';
 const { computed, observer } = Ember;
 
 export default Ember.Component.extend({
+  classNames: ['people-list'],
   savedPeople: computed('model,model.@each', function() {
     return this.get('model').filterBy('name');
-  }),
-  randomize: observer('model.@each,model.@each.cantDraw', function() {
-    this._randomize(this.get('savedPeople'));
   }),
   actions: {
     savePerson(person) {
