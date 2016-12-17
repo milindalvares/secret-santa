@@ -4,6 +4,7 @@ const { computed, observer } = Ember;
 
 export default Ember.Component.extend({
   classNames: ['people-list'],
+  classNameBindings: ['isSelectingAssociate'],
   savedPeople: computed('model,model.@each', function() {
     return this.get('model').filterBy('name');
   }),

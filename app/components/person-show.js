@@ -1,6 +1,16 @@
 import Ember from 'ember';
 
+const { get, computed } = Ember;
+
 export default Ember.Component.extend({
+  classNameBindings: ['isSelectedPerson'],
+  isSelectedPerson: computed('selectedPerson', function() {
+    if (get(this, 'model') == get(this, 'selectedPerson')) {
+      return true;
+    } else {
+      return false;
+    }
+  }),
   actions: {
     delete(model) {
       this.get('delete-person')(model)

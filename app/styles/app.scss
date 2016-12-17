@@ -49,10 +49,17 @@ body {
 
 .person-name {
   font-size: 24px;
+  .is-selecting-associate .is-selected-person & {
+    opacity: 0.3;
+  }
 }
 
 .people-list {
   text-align: center;
+  &.is-selecting-associate {
+    .is-selected-person {
+    }
+  }
 }
 
 
