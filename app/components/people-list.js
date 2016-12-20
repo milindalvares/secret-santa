@@ -49,8 +49,8 @@ export default Ember.Component.extend({
   _randomize(people) {
     this._reset(people);
     people.sortBy('sortId').forEach(person => {
-      person.get('cantDraw').then(assigned => {
-          let randModel = this._getRandomModel(people.filterBy('available').removeObject(person).removeObject(assigned));
+      person.get('cantDraw').then(cantDraw => {
+          let randModel = this._getRandomModel(people.filterBy('available').removeObject(person).removeObject(cantDraw));
           if (randModel !== undefined) {
             person.set('assigned', randModel.get('name'));
             person.save().then(() => {
@@ -59,7 +59,7 @@ export default Ember.Component.extend({
                 let data = {};
 
                 data["email"] = person.get('email');
-                data["name"] = randModel.get('assigned');
+                data["assigned"] = randModel.get('name');
 
                 Ember.$.ajax({
           				type: 'POST',

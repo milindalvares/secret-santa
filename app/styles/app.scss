@@ -1,6 +1,7 @@
 @import 'reset';
 
 $white: #F7F5F6;
+$red: #B40202;
 
 * {
   -moz-box-sizing: border-box;
@@ -11,6 +12,7 @@ body {
   background: #283442;
   color: #3D403D;
   font-family: "Euphoria Script", "Helvetica", sans-serif;
+  font-size: 22px;
 }
 
 #main-title {
@@ -69,6 +71,12 @@ body {
     position:absolute;top:0;left:0;
 }
 
+.btn-primary {
+  color: $red;
+  font-size: 24px;
+  margin-top: 25px;
+}
+
 .btn-delete {
   display: inline-block;
   text-indent: -9999px;
@@ -77,4 +85,18 @@ body {
   background: url('/images/cross.svg') no-repeat;
   margin-left: 15px;
   transform: translateY(5px);
+}
+
+.person-form {
+  margin-top: 25px;
+  border-top: 1px solid #ddd;
+  padding-top: 25px;
+  text-align: center;
+  .form-group {
+    margin-bottom: 15px;
+  }
+}
+
+.placeholder {
+  color: #aaa;
 }

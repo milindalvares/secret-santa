@@ -4,6 +4,6 @@
   <button {{action "selectPerson" model}} class="person-name" style={{model.escapedStyle}}>{{model.name}}</button>
 {{/if}}
 {{#if isSent}}
-  Done
+  <span class="sent-label">Sent</span>
 {{/if}}
 <button {{action "delete" model}} class="btn btn-delete">Delete</button>
