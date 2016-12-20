@@ -54,12 +54,12 @@ export default Ember.Component.extend({
           let randModel = this._getRandomModel(people.filterBy('available').removeObject(person).removeObject(cantDraw));
           if (randModel !== undefined) {
             randModel.set('available', false);
-            
+
             person.set('assigned', randModel.get('name'));
             person.save().then(() => {
               randModel.save().then(() => {
                 let data = {};
-
+                data["name"] = person.get('name');
                 data["email"] = person.get('email');
                 data["assigned"] = randModel.get('name');
 
