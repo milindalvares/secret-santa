@@ -45,6 +45,9 @@ body {
   height: 230px;
   width: 100%;
   margin-top: -100px;
+  @media (max-width: 600px) {
+    background: url('/images/trees.svg') right top no-repeat;
+  }
 }
 
 
