@@ -11,6 +11,7 @@ export default DS.Model.extend({
   available: DS.attr('boolean', { defaultValue: true }),
   cantDraw: DS.belongsTo('person'),
   color: DS.attr('string'),
+  sent_status: DS.attr('boolean', { defaultValue: false }),
   escapedStyle: computed('color', function() {
     const color = this.get('color');
     return Ember.String.htmlSafe("color:" + color);

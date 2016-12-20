@@ -53,10 +53,28 @@ export default Ember.Component.extend({
           let randModel = this._getRandomModel(people.filterBy('available').removeObject(person).removeObject(assigned));
           if (randModel !== undefined) {
             person.set('assigned', randModel.get('name'));
-            person.save();
+            person.save().then(() => {
+              randModel.set('available', false);
+              randModel.save().then(() => {
+                let data = {};
 
-            randModel.set('available', false);
-            randModel.save();
+                data["email"] = person.get('email');
+                data["name"] = randModel.get('assigned');
+
+                Ember.$.ajax({
+          				type: 'POST',
+          				data: data,
+          				url: "http://128.199.218.232:89/secretsanta/",
+          				success: function(data) {
+          					person.set('sent_status', true);
+          				},
+          				error: function(data) {
+          					console.log(data);
+          				}
+          			});
+              });
+            });
+
           } else {
             this._randomize(people);
           }

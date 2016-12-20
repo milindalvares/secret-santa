@@ -11,6 +11,13 @@ export default Ember.Component.extend({
       return false;
     }
   }),
+  isSent: computed('model.sent_status', function() {
+    if (get(this, 'model.sent_status')) {
+      return true;
+    } else {
+      return false;
+    }
+  }),
   actions: {
     delete(model) {
       this.get('delete-person')(model)
