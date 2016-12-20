@@ -2,6 +2,7 @@
   {{#each savedPeople as |person|}}
       {{person-show model=person save-person=(action 'savePerson') delete-person=(action 'deletePerson') select-person=(action 'selectPerson') isSelectingAssociate=isSelectingAssociate select-associate=(action 'selectAssociate') selectedPerson=selectedPerson}}
   {{/each}}
+  <span class="placeholder text-center">Tap pairs to prevent drawing each other.</span>
   <button {{action "randomize" savedPeople}} class="btn btn-primary">Randomize and Send</button>
 {{else}}
   <span class="placeholder text-center">Your List is empty.</span>
