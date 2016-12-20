@@ -49,12 +49,14 @@ export default Ember.Component.extend({
   _randomize(people) {
     this._reset(people);
     people.sortBy('sortId').forEach(person => {
+      person.set('sent_status', false);
       person.get('cantDraw').then(cantDraw => {
           let randModel = this._getRandomModel(people.filterBy('available').removeObject(person).removeObject(cantDraw));
           if (randModel !== undefined) {
+            randModel.set('available', false);
+            
             person.set('assigned', randModel.get('name'));
             person.save().then(() => {
-              randModel.set('available', false);
               randModel.save().then(() => {
                 let data = {};
 
