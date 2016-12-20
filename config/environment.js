@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'secret-santa',
     environment: environment,
-    rootURL: '/',
+    rootURL: '/secret-santa',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
