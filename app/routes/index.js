@@ -2,11 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model() {
-    return Ember.RSVP.hash({
-      people: this.store.findAll('person'),
-      newPerson: this.store.createRecord('person')
-    });
-
+    return this.store.findAll('person');
   },
   afterModel() {
     this.store.createRecord('person');

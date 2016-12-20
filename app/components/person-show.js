@@ -3,6 +3,7 @@ import Ember from 'ember';
 const { get, computed } = Ember;
 
 export default Ember.Component.extend({
+  classNames: ['person-item'],
   classNameBindings: ['isSelectedPerson'],
   isSelectedPerson: computed('selectedPerson', function() {
     if (get(this, 'model') == get(this, 'selectedPerson')) {

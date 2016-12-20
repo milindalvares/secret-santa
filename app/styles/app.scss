@@ -10,7 +10,7 @@ $white: #F7F5F6;
 body {
   background: #283442;
   color: #3D403D;
-  font-family: "Nanum Brush Script", "Helvetica", sans-serif;
+  font-family: "Euphoria Script", "Helvetica", sans-serif;
 }
 
 #main-title {
@@ -60,9 +60,21 @@ body {
     .is-selected-person {
     }
   }
+  .person-item {
+    margin-bottom: 5px;
+  }
 }
-
 
 #snowfall {
     position:absolute;top:0;left:0;
+}
+
+.btn-delete {
+  display: inline-block;
+  text-indent: -9999px;
+  width: 7px;
+  height: 7px;
+  background: url('/images/cross.svg') no-repeat;
+  margin-left: 15px;
+  transform: translateY(5px);
 }
