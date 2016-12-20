@@ -3,7 +3,6 @@
 {{else}}
   <button {{action "selectPerson" model}} class="person-name" style={{model.escapedStyle}}>{{model.name}}</button>
 {{/if}}
-{{model.assigned}}
 {{#if isSent}}
   <span class="sent-label">Sent</span>
 {{/if}}
