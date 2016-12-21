@@ -72,6 +72,7 @@ body {
 
 #snowfall {
     position:absolute;top:0;left:0;
+    z-index: -1;
 }
 
 .btn-primary {
@@ -97,9 +98,24 @@ body {
   text-align: center;
   .form-group {
     margin-bottom: 15px;
+    font-family: "Open Sans Condensed";
+    font-size: 16px;
+    label {
+      margin-right: 15px;
+    }
+    input {
+      border: 1px solid #ddd;
+      background: white;
+      border-radius: 4px;
+      padding: 7px 15px;
+    }
   }
 }
 
 .placeholder {
   color: #aaa;
+  display: block;
+  margin-top: 25px;
+  font-family: "Open Sans Condensed";
+  font-size: 16px;
 }
