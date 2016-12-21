@@ -1,7 +1,11 @@
-{{#if isSelectingAssociate}}
-  <button {{action "selectAssociate" model}} class="person-name" style={{model.escapedStyle}}>{{model.name}}</button>
+{{#if isSelectedPerson}}
+  <button {{action "cancelAssociation" model}} class="person-name" style={{model.escapedStyle}}>{{model.name}}</button>
 {{else}}
-  <button {{action "selectPerson" model}} class="person-name" style={{model.escapedStyle}}>{{model.name}}</button>
+  {{#if isSelectingAssociate}}
+    <button {{action "selectAssociate" model}} class="person-name" style={{model.escapedStyle}}>{{model.name}}</button>
+  {{else}}
+    <button {{action "selectPerson" model}} class="person-name" style={{model.escapedStyle}}>{{model.name}}</button>
+  {{/if}}
 {{/if}}
 {{#if isSent}}
   <span class="sent-label">Sent</span>

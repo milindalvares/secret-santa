@@ -35,6 +35,9 @@ export default Ember.Component.extend({
     },
     selectAssociate(person) {
       this.get('select-associate')(person);
+    },
+    cancelAssociation(person) {
+      this.get('cancel-association')(person);
     }
   }
 });

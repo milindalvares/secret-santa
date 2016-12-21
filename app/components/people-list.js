@@ -1,13 +1,20 @@
 import Ember from 'ember';
 import randomColor from 'npm:randomcolor';
 
-const { computed, observer } = Ember;
+const { computed, observer, get } = Ember;
 
 export default Ember.Component.extend({
   classNames: ['people-list'],
   classNameBindings: ['isSelectingAssociate'],
   savedPeople: computed('model,model.@each', function() {
     return this.get('model').filterBy('name');
+  }),
+  isSelectingAssociate: computed('selectedPerson', function() {
+    if (get(this, 'selectedPerson')) {
+      return true;
+    } else {
+      return false;
+    }
   }),
   actions: {
     savePerson(person) {
@@ -18,10 +25,9 @@ export default Ember.Component.extend({
     },
     selectPerson(person) {
       this.set('selectedPerson', person);
-      this.set('isSelectingAssociate', true);
+
     },
     selectAssociate(associate) {
-      this.set('isSelectingAssociate', false);
       const selectedPerson = this.get('selectedPerson');
       const color = randomColor();
 
@@ -34,7 +40,10 @@ export default Ember.Component.extend({
         cantDraw: selectedPerson,
         color: color
       });
-      associate.save();
+      associate.save().then(() => {
+        this.set('selectedPerson', null);
+      });
+
     },
     deletePerson(person) {
       person.destroyRecord();
@@ -45,6 +54,17 @@ export default Ember.Component.extend({
     reset(people) {
       this._reset(people);
     },
+    cancelAssociation(person) {
+      this.set('selectedPerson', null);
+      person.get('cantDraw').then(association => {
+        if (association) {
+          association.set('cantDraw', null);
+          association.set('color', null);
+        }
+        person.set('cantDraw', null);
+        person.set('color', null);
+      })
+    }
   },
   _randomize(people) {
     this._reset(people);

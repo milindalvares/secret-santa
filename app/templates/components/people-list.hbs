@@ -1,8 +1,20 @@
 {{#if savedPeople}}
   {{#each savedPeople as |person|}}
-      {{person-show model=person save-person=(action 'savePerson') delete-person=(action 'deletePerson') select-person=(action 'selectPerson') isSelectingAssociate=isSelectingAssociate select-associate=(action 'selectAssociate') selectedPerson=selectedPerson}}
+      {{person-show model=person save-person=(action 'savePerson')
+                                  delete-person=(action 'deletePerson')
+                                  select-person=(action 'selectPerson')
+                                  isSelectingAssociate=isSelectingAssociate
+                                  select-associate=(action 'selectAssociate')
+                                  cancel-association=(action 'cancelAssociation')
+                                  selectedPerson=selectedPerson}}
   {{/each}}
-  <span class="placeholder text-center">Tap pairs to prevent drawing each other.</span>
+
+  {{#if isSelectingAssociate}}
+    <span class="placeholder text-center">Select pair to prevent drawing. Tap again to cancel.</span>
+  {{else}}
+    <span class="placeholder text-center">Tap pairs to prevent drawing each other.</span>
+  {{/if}}
+
   <button {{action "randomize" savedPeople}} class="btn btn-primary">Randomize and Send</button>
 {{else}}
   <span class="placeholder text-center">Your List is empty.</span>
