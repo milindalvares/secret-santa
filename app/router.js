@@ -7,7 +7,7 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('index', { path: '/secretsanta' });
+  this.route('index', { path: '/' });
 });
 
 export default Router;

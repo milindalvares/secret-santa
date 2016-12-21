@@ -1,10 +1,11 @@
-<div class="form-group">
-  <label>Name</label>
-  {{input value=model.name}}
-</div>
-<div class="form-group">
-  <label>Email</label>
-  {{input value=model.email}}
-</div>
-
-<button {{action "savePerson" model}}>Add To List</button>
+<form {{action "savePerson" model on="submit"}}>
+  <div class="form-group">
+    <label>Name</label>
+    {{input value=model.name required='true'}}
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    {{input value=model.email required='true' type='email'}}
+  </div>
+  <button type=submit>Add To List</button>
+</form>
