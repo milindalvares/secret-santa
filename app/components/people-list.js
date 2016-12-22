@@ -2,8 +2,10 @@ import Ember from 'ember';
 import randomColor from 'npm:randomcolor';
 
 const { computed, observer, get } = Ember;
+const url = "http://128.199.218.232:89/secretsanta/";
 
 export default Ember.Component.extend({
+  mailer: Ember.inject.service('ajax-mailer'),
   classNames: ['people-list'],
   classNameBindings: ['isSelectingAssociate'],
   savedPeople: computed('model,model.@each', function() {
@@ -74,7 +76,6 @@ export default Ember.Component.extend({
           let randModel = this._getRandomModel(people.filterBy('available').removeObject(person).removeObject(cantDraw));
           if (randModel !== undefined) {
             randModel.set('available', false);
-
             person.set('assigned', randModel.get('name'));
             person.save().then(() => {
               randModel.save().then(() => {
@@ -82,18 +83,12 @@ export default Ember.Component.extend({
                 data["name"] = person.get('name');
                 data["email"] = person.get('email');
                 data["assigned"] = randModel.get('name');
-
-                Ember.$.ajax({
-          				type: 'POST',
-          				data: data,
-          				url: "http://128.199.218.232:89/secretsanta/",
-          				success: function(data) {
-          					person.set('sent_status', true);
-          				},
-          				error: function(data) {
-          					console.log(data);
-          				}
-          			});
+                let promise = this.get('mailer').sendMail(data,url);
+                promise.then(function(value) {
+                  console.log(value);
+                }).catch(function(error) {
+                  console.log(error);
+                });
               });
             });
 
