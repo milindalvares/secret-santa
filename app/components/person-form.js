@@ -1,5 +1,16 @@
 import Ember from 'ember';
-export default Ember.Component.extend({
+import { validator, buildValidations } from 'ember-cp-validations';
+
+const Validations = buildValidations({
+  'model.email': [
+    validator('presence', true),
+    validator('format', { type: 'email',description: 'Email' })
+  ],
+  'model.name': [
+    validator('presence', true)
+  ]
+});
+export default Ember.Component.extend(Validations,{
   classNames: ['person-form'],
   actions: {
     savePerson(person) {
