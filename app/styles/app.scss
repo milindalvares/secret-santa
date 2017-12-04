@@ -2,6 +2,7 @@
 
 $white: #F7F5F6;
 $red: #B40202;
+$fontNormal: "Open Sans Condensed";
 
 * {
   -moz-box-sizing: border-box;
@@ -30,6 +31,7 @@ body {
 
 .outer-container {
   padding: 10px;
+  padding-bottom: 50px;
   background: $white;
 }
 
@@ -84,16 +86,19 @@ body {
 .btn-delete {
   display: inline-block;
   text-indent: -9999px;
-  width: 7px;
-  height: 7px;
-  background: url('/images/cross.svg') no-repeat;
+  width: 5px;
+  height: 5px;
+  border: 1px solid #ddd;
+  padding: 5px;
+  margin-top: -5px;
+  box-sizing: content-box;
+  background: url('/images/cross.svg') center no-repeat;
   margin-left: 15px;
   transform: translateY(5px);
 }
 
 .person-form {
   margin-top: 25px;
-  border-top: 1px solid #ddd;
   padding-top: 25px;
   text-align: center;
   .form-group {
@@ -103,19 +108,107 @@ body {
     label {
       margin-right: 15px;
     }
-    input {
-      border: 1px solid #ddd;
-      background: white;
-      border-radius: 4px;
-      padding: 7px 15px;
+  }
+}
+
+input, textarea {
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 4px;
+  padding: 10px 15px;
+}
+
+textarea {
+  width: 100%;
+  margin: 0 auto;
+}
+
+#actions {
+  background: white;
+  margin: 15px auto;
+  max-width: 500px;
+  padding: 25px;
+  overflow: auto;
+  border-radius: 3px;
+  box-shadow: 0px 1px 5px transparentize(black, 0.9);
+  margin-top: 25px;
+  .btn-primary {
+    margin-top: 10px;
+  }
+  .preview {
+    font-family: $fontNormal;
+    font-size: 18px;
+    margin-bottom: 15px;
+    line-height: 130%;
+  }
+  label {
+    font-family: $fontNormal;
+    font-size: 14px;
+  }
+  textarea {
+    margin-bottom: 10px;
+    text-align: left;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    resize: none;
+    border-radius: 0;
+    padding: 0;
+    font-size: 18px;
+    font-family: $fontNormal;
+    &:focus {
+      outline: none;
+      border-bottom: 1px solid transparentize($red, 0.8);
     }
   }
+  .preview-block {
+    font-family: $fontNormal;
+    text-align: left;
+    p {
+      margin-bottom: 15px;
+      font-size: 18px;
+      line-height: 130%;
+    }
+    .preview-label {
+      font-size: 14px;
+      text-transform: uppercase;
+      color: #aaa;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      display: block;
+    }
+    strong {
+      font-weight: bold;
+    }
+  }
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
 }
 
 .placeholder {
   color: #aaa;
   display: block;
   margin-top: 25px;
-  font-family: "Open Sans Condensed";
+  font-family: $fontNormal;
   font-size: 16px;
+}
+
+button {
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
 }

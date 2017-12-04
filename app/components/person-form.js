@@ -1,20 +1,30 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import EmberObject, { get, set } from "@ember/object";
+import { on } from "@ember/object/evented"
 import { validator, buildValidations } from 'ember-cp-validations';
 
+import { inject as service } from "@ember/service";
+
 const Validations = buildValidations({
-  'model.email': [
+  'email': [
     validator('presence', true),
     validator('format', { type: 'email',description: 'Email' })
   ],
-  'model.name': [
+  'name': [
     validator('presence', true)
   ]
 });
-export default Ember.Component.extend(Validations,{
+
+export default Component.extend(Validations, {
   classNames: ['person-form'],
+  name: '',
+  email: '',
   actions: {
-    savePerson(person) {
-      this.get('save-person')(person);
+    savePerson(name, email) {
+      this.attrs.savePerson(name, email).then((person) => {
+        set(this, 'name', null);
+        set(this, 'email', null);
+      });
     }
   }
 });

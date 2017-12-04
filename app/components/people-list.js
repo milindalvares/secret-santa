@@ -1,14 +1,10 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import EmberObject, { computed, observer, get } from "@ember/object";
 import randomColor from 'npm:randomcolor';
 
-const { computed, observer, get } = Ember;
-
-export default Ember.Component.extend({
+export default Component.extend({
   classNames: ['people-list'],
   classNameBindings: ['isSelectingAssociate'],
-  savedPeople: computed('model,model.@each', function() {
-    return this.get('model').filterBy('name');
-  }),
   isSelectingAssociate: computed('selectedPerson', function() {
     if (get(this, 'selectedPerson')) {
       return true;
