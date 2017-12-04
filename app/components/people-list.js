@@ -44,7 +44,7 @@ export default Component.extend({
     deletePerson(person) {
       person.destroyRecord();
     },
-    randomize(people) {
+    randomize(people, allowWishlisting, message) {
       this._randomize(people);
     },
     reset(people) {
@@ -62,7 +62,7 @@ export default Component.extend({
       })
     }
   },
-  _randomize(people) {
+  _randomize(people, allowWishlisting, message) {
     this._reset(people);
     people.sortBy('sortId').forEach(person => {
       person.set('sent_status', false);
@@ -78,8 +78,12 @@ export default Component.extend({
                 data["name"] = person.get('name');
                 data["email"] = person.get('email');
                 data["assigned"] = randModel.get('name');
+                data["message"] = message;
+                if (allowWishlisting) {
+                  data["recepient_hash"] = btoa(person.get('email'))
+                }
 
-                Ember.$.ajax({
+                EmberObject.$.ajax({
           				type: 'POST',
           				data: data,
           				url: "http://128.199.218.232:89/secretsanta/",

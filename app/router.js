@@ -8,6 +8,7 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('index', { path: '/' });
+  this.route('send-wishlist', { path: 'send-wishlist/:email'});
 });
 
 export default Router;

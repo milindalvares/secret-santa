@@ -3,6 +3,7 @@
 $white: #F7F5F6;
 $red: #B40202;
 $fontNormal: "Open Sans Condensed";
+$fontFancy: "Euphoria Script", "Helvetica", sans-serif;
 
 * {
   -moz-box-sizing: border-box;
@@ -12,7 +13,7 @@ $fontNormal: "Open Sans Condensed";
 body {
   background: #283442;
   color: #3D403D;
-  font-family: "Euphoria Script", "Helvetica", sans-serif;
+  font-family: $fontFancy;
   font-size: 22px;
 }
 
@@ -145,21 +146,7 @@ textarea {
     font-family: $fontNormal;
     font-size: 14px;
   }
-  textarea {
-    margin-bottom: 10px;
-    text-align: left;
-    border: none;
-    border-bottom: 1px solid #ddd;
-    resize: none;
-    border-radius: 0;
-    padding: 0;
-    font-size: 18px;
-    font-family: $fontNormal;
-    &:focus {
-      outline: none;
-      border-bottom: 1px solid transparentize($red, 0.8);
-    }
-  }
+
   .preview-block {
     font-family: $fontNormal;
     text-align: left;
@@ -168,17 +155,48 @@ textarea {
       font-size: 18px;
       line-height: 130%;
     }
-    .preview-label {
-      font-size: 14px;
-      text-transform: uppercase;
-      color: #aaa;
-      letter-spacing: 1px;
-      margin-bottom: 10px;
-      display: block;
-    }
     strong {
       font-weight: bold;
     }
+  }
+}
+
+.preview-label {
+  font-family: $fontNormal;
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #aaa;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+textarea {
+
+  text-align: left;
+  border: none;
+  // border-bottom: 1px solid #ddd;
+  resize: none;
+  border-radius: 0;
+  padding: 0;
+  font-size: 18px;
+  font-family: $fontNormal;
+  background: none;
+  &:focus {
+    outline: none;
+    // border-bottom: 1px solid transparentize($red, 0.8);
+  }
+}
+
+.send-wishlist {
+  // .preview-label {
+  //   font-family: $fontNormal;
+  //   margin-bottom: 10px;
+  //   display: block;
+  // }
+  textarea {
+    font-size: 20px;
+    margin-top: 15px;
   }
 }
 
@@ -211,4 +229,11 @@ button {
 
 .pull-left {
   float: left;
+}
+
+#footer {
+  text-align: center;
+  font-size: 16px;
+  padding-top: 15px;
+  margin-top: 25px;
 }
