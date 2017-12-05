@@ -11,23 +11,36 @@ $fontFancy: "Euphoria Script", "Helvetica", sans-serif;
 }
 
 body {
-  background: #283442;
+  background: $white;
   color: #3D403D;
   font-family: $fontFancy;
   font-size: 22px;
 }
 
+#main-header {
+  position: relative;
+  z-index: 200;
+}
+
 #main-title {
-  background: url('/images/logo.svg') no-repeat;
-  text-indent: -9999px;
-  width: 243px;
-  height: 82px;
-  margin: 200px auto 0px;
+  a {
+    background: url('/images/logo.svg') no-repeat;
+    text-indent: -9999px;
+    width: 243px;
+    height: 82px;
+    margin: 200px auto 0px;
+    display: block;
+  }
 }
 
 .container {
   max-width: 800px;
   margin: 0 auto;
+}
+
+.top-container {
+  background: #283442;
+  overflow: auto;
 }
 
 .outer-container {
@@ -75,7 +88,6 @@ body {
 
 #snowfall {
     position:absolute;top:0;left:0;
-    z-index: -1;
 }
 
 .btn-primary {
@@ -102,6 +114,11 @@ body {
   margin-top: 25px;
   padding-top: 25px;
   text-align: center;
+  button {
+    &:disabled {
+      opacity: 0.5;
+    }
+  }
   .form-group {
     margin-bottom: 15px;
     font-family: "Open Sans Condensed";
@@ -236,4 +253,9 @@ button {
   font-size: 16px;
   padding-top: 15px;
   margin-top: 25px;
+  a {
+    font-family: $fontNormal;
+    font-size: 14px;
+    color: #666;
+  }
 }

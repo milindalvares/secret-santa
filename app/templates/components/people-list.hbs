@@ -10,6 +10,11 @@
                     selectedPerson=selectedPerson}}
     {{/if}}
   {{/each}}
+  {{#if isSelectingAssociate}}
+    <span class="placeholder text-center">Select pair to prevent drawing. Tap again to cancel.</span>
+  {{else}}
+    <span class="placeholder text-center">Tap pairs to prevent drawing each other.</span>
+  {{/if}}
 {{else}}
   <span class="placeholder text-center">Your List is empty.</span>
 {{/if}}
@@ -17,11 +22,6 @@
 {{person-form savePerson=(action savePerson)}}
 
 {{#if model}}
-  {{#if isSelectingAssociate}}
-    <span class="placeholder text-center">Select pair to prevent drawing. Tap again to cancel.</span>
-  {{else}}
-    <span class="placeholder text-center">Tap pairs to prevent drawing each other.</span>
-  {{/if}}
   <div id="actions">
 
     <div class="preview-block">
