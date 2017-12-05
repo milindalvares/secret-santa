@@ -16,6 +16,7 @@ export default Component.extend({
         url: "http://128.199.218.232:89/secretsanta-wishlist/",
         success: function(data) {
           set(this, 'sent', true);
+          set(this, 'message', null);
         },
         error: function(data) {
           console.log(data);
