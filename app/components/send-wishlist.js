@@ -10,7 +10,7 @@ export default Component.extend({
       data["message"] = message;
 
 
-      EmberObject.$.ajax({
+      $.ajax({
         type: 'POST',
         data: data,
         url: "http://128.199.218.232:89/secretsanta-wishlist/",

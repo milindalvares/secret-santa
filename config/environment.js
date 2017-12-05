@@ -5,7 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'secret-santa',
     environment,
     rootURL: '/',
-    locationType: 'auto',
+    locationType: 'hash',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -43,7 +43,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.rootURL = '/secret-santa';
+    ENV.rootURL = '/secret-santa/';
+    ENV.locationType = 'hash';
   }
 
   return ENV;

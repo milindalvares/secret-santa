@@ -15,6 +15,7 @@ body {
   color: #3D403D;
   font-family: $fontFancy;
   font-size: 22px;
+  overflow-x: hidden;
 }
 
 #main-header {
@@ -40,7 +41,8 @@ body {
 
 .top-container {
   background: #283442;
-  overflow: auto;
+  overflow: hidden;
+  height: 490px;
 }
 
 .outer-container {

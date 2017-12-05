@@ -45,7 +45,7 @@ export default Component.extend({
       person.destroyRecord();
     },
     randomize(people, allowWishlisting, message) {
-      this._randomize(people);
+      this._randomize(people, allowWishlisting, message);
     },
     reset(people) {
       this._reset(people);
@@ -80,10 +80,9 @@ export default Component.extend({
                 data["assigned"] = randModel.get('name');
                 data["message"] = message;
                 if (allowWishlisting) {
-                  data["recepient_hash"] = btoa(person.get('email'))
+                  data["recepient_hash"] = btoa(randModel.get('email'))
                 }
-
-                EmberObject.$.ajax({
+                $.ajax({
           				type: 'POST',
           				data: data,
           				url: "http://128.199.218.232:89/secretsanta/",
