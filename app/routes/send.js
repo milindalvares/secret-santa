@@ -6,6 +6,7 @@ export default Route.extend({
   },
   actions: {
     transitionToSuccess() {
+      console.log('test');
       this.transitionTo('success');
     }
   }

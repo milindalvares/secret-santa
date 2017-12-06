@@ -5,6 +5,8 @@ export default Component.extend({
   classNames: ['send-wishlist'],
   actions: {
     send(message, recepient) {
+      set(this, 'sending', true);
+      const component = this;
       let data = {};
       data["recipient"] = atob(recepient);
       data["message"] = message;
@@ -15,8 +17,8 @@ export default Component.extend({
         data: data,
         url: "http://128.199.218.232:89/secretsanta-wishlist/",
         success: function(data) {
-          set(this, 'sent', true);
-          set(this, 'message', null);
+          set(component, 'sending', false);
+          set(component, 'message', null);
         },
         error: function(data) {
           console.log(data);

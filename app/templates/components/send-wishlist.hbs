@@ -1,12 +1,14 @@
-<div id="actions">
+
 
   <span class="preview-label">Message Preview</span>
   <p class="preview">Hi, your santee, without knowing who you are, has sent you this message…</p>
   <div class="preview-block">
     {{textarea value=message placeholder="Write your message here…" class="form-control"}}
   </div>
-  <button {{action "send" message model}} class="btn btn-primary">Send to your Secret Santa!</button>
-  {{#if sent}}
-    <span class="preview-label">Message Sent</span>  
-  {{/if}}
-</div>
+  <button {{action "send" message model}} class="btn btn-primary">
+    {{#unless sending}}
+      Send to your Secret Santa!
+    {{else}}
+      <div class="sonar-emitter"></div> Sending
+    {{/unless}}
+  </button>

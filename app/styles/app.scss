@@ -3,8 +3,8 @@
 
 $white: #FCF4E5;
 $red: #E03836;
-$fontNormal: "colby-condensed";
-$fontBasic: "colby-standard";
+$fontNormal: "colby-condensed", "Helvetica", sans-serif;
+$fontBasic: "colby-standard","Helvetica", sans-serif;
 $fontFancy: $fontNormal;
 $dark: #283442;
 
@@ -232,7 +232,7 @@ textarea {
   margin: 0 auto;
 }
 
-.sending-form {
+.sending-form, .send-wishlist {
   background: white;
   margin: 15px auto;
   max-width: 500px;
