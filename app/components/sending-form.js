@@ -44,7 +44,7 @@ export default Component.extend({
                   	url: "http://128.199.218.232:89/secretsanta/",
                   	success: function(response) {
                       set(component, 'isSending', false);
-                      console.log(response, 'response');
+                      component.attrs.success;
                   	},
                   	error: function(error) {
                       console.log(error, 'error');

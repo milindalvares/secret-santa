@@ -12,6 +12,7 @@ Router.map(function() {
   this.route('send-wishlist', { path: 'send-wishlist/:email'});
 
   this.route('select-pairs');
+  this.route('success');
 });
 
 export default Router;

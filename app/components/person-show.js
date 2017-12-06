@@ -5,6 +5,7 @@ const { get, computed } = Ember;
 export default Ember.Component.extend({
   classNames: ['person-item'],
   classNameBindings: ['isSelectedPerson'],
+  showDelete: true,
   isSelectedPerson: computed('selectedPerson', function() {
     if (get(this, 'model') == get(this, 'selectedPerson')) {
       return true;

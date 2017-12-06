@@ -5,8 +5,9 @@ export default Route.extend({
     return this.store.findAll('person');
   },
   actions: {
-    transitionToSuccess() {
-      this.transitionTo('success');
+    sendMore(model) {
+      model.invoke('destroyRecord')
+      this.transitionTo('index');
     }
   }
 });

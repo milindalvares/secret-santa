@@ -1,0 +1,11 @@
+<div class="text-center">
+  <h3>Success!</h3>
+  <p>
+    Your santas ({{#each model as |person|}}<span class="santa-name">{{person.name}}</span>{{/each}}) will receive emails with the name of their <em>santee</em>, and no one knows who got whom. Wish you all a Merry Christmas!
+  </p>
+  <div class="m-t">
+    <button {{action (route-action 'sendMore' model)}} class="btn-primary">Send more</button>
+    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//hashcooki.es/secret-santa" class="btn-primary">Share this page on Facebook</a>
+
+  </div>
+</div>
