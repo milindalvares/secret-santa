@@ -113,11 +113,6 @@ export default Ember.Component.extend({
       mY = e.clientY
   });
 
-  window.addEventListener("resize",function(){
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-  })
-
   init();
   }
 });

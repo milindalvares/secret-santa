@@ -81,12 +81,6 @@ h3 {
   background: $white;
 }
 
-#snow {
-  background: url('/images/snow-2.svg') center top;
-  height: 100px;
-  width: 100%;
-  margin-top: -20px;
-}
 
 #trees {
   background: url('/images/trees.svg') right 100px top no-repeat;
@@ -139,6 +133,8 @@ h3 {
 
 #snowfall {
     position:absolute;top:0;left:0;
+
+    max-height: 400px !important;
 }
 
 .btn-primary {
@@ -192,6 +188,7 @@ h3 {
   width: 5px;
   height: 5px;
   border: 1px solid #ddd;
+  border-radius: 3px;
   padding: 5px;
   box-sizing: content-box;
   background: url('/images/cross.svg') center no-repeat;
