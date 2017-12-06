@@ -20,7 +20,7 @@ export default Ember.Component.extend({
       mY = -10
 
       canvas.width = window.innerWidth;
-      canvas.height = 480;
+      canvas.height = 400;
 
   function snow() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);

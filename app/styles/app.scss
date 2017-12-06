@@ -1,9 +1,10 @@
 @import 'reset';
+@import 'fonts';
 
 $white: #FCF4E5;
 $red: #E03836;
-$fontNormal: "Colby Condensed";
-$fontBasic: "Colby", "Open Sans";
+$fontNormal: "colby-condensed";
+$fontBasic: "colby-standard";
 $fontFancy: $fontNormal;
 $dark: #283442;
 
@@ -58,7 +59,7 @@ h3 {
     text-indent: -9999px;
     width: 243px;
     height: 82px;
-    margin: 200px auto 0px;
+    margin: 180px auto 0px;
     display: block;
   }
 }
@@ -71,7 +72,7 @@ h3 {
 .top-container {
   background: #283442;
   overflow: hidden;
-  height: 490px;
+  height: 400px;
 }
 
 .outer-container {
@@ -81,7 +82,7 @@ h3 {
 }
 
 #snow {
-  background: url('/images/snow.svg') center top;
+  background: url('/images/snow-2.svg') center top;
   height: 100px;
   width: 100%;
   margin-top: -20px;
@@ -91,7 +92,7 @@ h3 {
   background: url('/images/trees.svg') right 100px top no-repeat;
   height: 230px;
   width: 100%;
-  margin-top: -100px;
+  margin-top: -90px;
   @media (max-width: 600px) {
     background: url('/images/trees.svg') right top no-repeat;
   }
@@ -110,6 +111,7 @@ h3 {
   // text-align: center;
   max-width: 340px;
   margin:0 auto;
+  padding-top: 50px;
   &.is-selecting-associate {
     .is-selected-person {
     }
@@ -153,7 +155,9 @@ h3 {
   transition-duration: 400ms;
   text-decoration: none;
   display: inline-block;
-
+  @media (max-width: 414px) {
+    margin-bottom: 15px;
+  }
   &:hover {
     background: darken(#E03836, 10%);
   }
@@ -248,7 +252,11 @@ textarea {
   }
   label {
     font-family: $fontNormal;
-    font-size: 14px;
+    font-size: 18px;
+    margin-bottom: 5px;
+    a {
+      color: $dark;
+    }
   }
 
   .preview-block {

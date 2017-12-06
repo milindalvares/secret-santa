@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "colby-condensed";
+  src:url("/fonts/Colby-CdReg.eot");
+  src:url("/fonts/Colby-CdReg.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/Colby-CdReg.woff") format("woff"),
+    url("/fonts/Colby-CdReg.ttf") format("truetype"),
+    url("/fonts/Colby-CdReg.svg#colby-condensed") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: "colby-standard";
+  src:url("/fonts/Colby-StReg.eot");
+  src:url("/fonts/Colby-StReg.eot?#iefix") format("embedded-opentype"),
+    url("/fonts/Colby-StReg.woff") format("woff"),
+    url("/fonts/Colby-StReg.ttf") format("truetype"),
+    url("/fonts/Colby-StReg.svg#colby-standard") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
