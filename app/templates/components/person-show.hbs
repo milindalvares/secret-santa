@@ -1,13 +1,10 @@
 {{#if isSelectedPerson}}
-  <button {{action "cancelAssociation" model}} class="person-name" style={{model.escapedStyle}}>{{model.name}}</button>
+  <button class="btn-list" {{action "cancelAssociation" model}} class="person-name" style={{model.escapedStyle}}>{{model.name}}</button>
 {{else}}
   {{#if isSelectingAssociate}}
-    <button {{action "selectAssociate" model}} class="person-name" style={{model.escapedStyle}}>{{model.name}}</button>
+    <button class="btn-list" {{action "selectAssociate" model}} class="person-name" style={{model.escapedStyle}}>{{model.name}}</button>
   {{else}}
-    <button {{action "selectPerson" model}} class="person-name" style={{model.escapedStyle}}>{{model.name}}</button>
+    <button class="btn-list" {{action "selectPerson" model}} class="person-name" style={{model.escapedStyle}}>{{model.name}}</button>
   {{/if}}
 {{/if}}
-{{#if isSent}}
-  <span class="sent-label">Sent</span>
-{{/if}}
-<button {{action "delete" model}} class="btn btn-delete">Delete</button>
+<button {{action "delete" model}} class="btn btn-delete pull-right">Delete</button>

@@ -10,33 +10,18 @@
                     selectedPerson=selectedPerson}}
     {{/if}}
   {{/each}}
-  {{#if isSelectingAssociate}}
-    <span class="placeholder text-center">Select pair to prevent drawing. Tap again to cancel.</span>
-  {{else}}
-    <span class="placeholder text-center">Tap pairs to prevent drawing each other.</span>
+  {{#if showActions}}
+    {{#if isSelectingAssociate}}
+      <span class="placeholder text-center">Select pair to prevent drawing. Tap again to cancel.</span>
+    {{else}}
+      <span class="placeholder text-center">Tap pairs to prevent drawing each other.</span>
+    {{/if}}
+    <div class="text-center m-t">
+      {{#link-to 'index' class="btn-primary"}}Add More{{/link-to}}
+      {{#link-to 'send' class="btn-primary"}}Next{{/link-to}}
+
+    </div>
   {{/if}}
 {{else}}
-  <span class="placeholder text-center">Your List is empty.</span>
-{{/if}}
-
-{{person-form savePerson=(action savePerson)}}
-
-{{#if model}}
-  <div id="actions">
-
-    <div class="preview-block">
-      <span class="preview-label">Message Preview</span>
-      <p class="preview">Hi, you are secret santa to {{model.firstObject.name}}.</p>
-      {{#if allowWishlisting}}
-      <p class="preview">You also have a secret santa of your own! You can't know who they are but you can write them a wishlist by clicking this link.</p>
-      {{/if}}
-      {{textarea value=message placeholder="Write optional message here…" class="form-control"}}
-    </div>
-    <div class="pull-left">
-      <label>
-        {{input type="checkbox" checked=allowWishlisting}} Allow Wishlisting <a href="http://hashcooki.es/journal/secret-santa">(what's this?)</a>
-      </label>
-    </div>
-    <button {{action "randomize" model allowWishlisting message}} class="btn btn-primary pull-right">Randomize and Send</button>
-  </div>
+  <span class="placeholder text-center m-b">Your List is empty.</span>
 {{/if}}

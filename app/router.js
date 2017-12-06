@@ -8,7 +8,10 @@ const Router = EmberRouter.extend({
 
 Router.map(function() {
   this.route('index', { path: '/' });
+  this.route('send');
   this.route('send-wishlist', { path: 'send-wishlist/:email'});
+
+  this.route('select-pairs');
 });
 
 export default Router;

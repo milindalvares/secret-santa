@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import EmberObject, { get, set } from "@ember/object";
+import EmberObject, { get, set, computed } from "@ember/object";
 import { on } from "@ember/object/evented"
 import { validator, buildValidations } from 'ember-cp-validations';
 
@@ -17,6 +17,13 @@ const Validations = buildValidations({
 
 export default Component.extend(Validations, {
   classNames: ['person-form'],
+  showSendLink: computed('modelCount', function() {
+    if (get(this, 'modelCount') > 1) {
+      return true;
+    } else {
+      return false;
+    }
+  }),
   name: '',
   email: '',
   actions: {

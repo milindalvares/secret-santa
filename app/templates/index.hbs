@@ -1,1 +1,3 @@
-{{people-list model=model savePerson=(route-action 'savePerson')}}
+{{people-list model=model showActions=false}}
+
+{{person-form modelCount=model.length savePerson=(route-action "savePerson")}}

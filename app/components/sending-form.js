@@ -1,49 +1,9 @@
 import Component from '@ember/component';
 import EmberObject, { computed, observer, get, set } from "@ember/object";
-import randomColor from 'npm:randomcolor';
 
 export default Component.extend({
-  classNames: ['people-list'],
-  classNameBindings: ['isSelectingAssociate'],
-  isSelectingAssociate: computed('selectedPerson', function() {
-    if (get(this, 'selectedPerson')) {
-      return true;
-    } else {
-      return false;
-    }
-  }),
+  classNames: ['sending-form'],
   actions: {
-    savePerson(person) {
-      if (person.get('isNew')) {
-        this.store.createRecord('person');
-      }
-      person.save();
-    },
-    selectPerson(person) {
-      this.set('selectedPerson', person);
-
-    },
-    selectAssociate(associate) {
-      const selectedPerson = this.get('selectedPerson');
-      const color = randomColor();
-
-      selectedPerson.setProperties({
-          cantDraw: associate,
-          color: color
-      });
-      selectedPerson.save();
-      associate.setProperties({
-        cantDraw: selectedPerson,
-        color: color
-      });
-      associate.save().then(() => {
-        this.set('selectedPerson', null);
-      });
-
-    },
-    deletePerson(person) {
-      person.destroyRecord();
-    },
     randomize(people, allowWishlisting, message) {
       set(this, 'isSending', true);
       this._randomize(people, allowWishlisting, message);
@@ -51,17 +11,6 @@ export default Component.extend({
     reset(people) {
       this._reset(people);
     },
-    cancelAssociation(person) {
-      this.set('selectedPerson', null);
-      person.get('cantDraw').then(association => {
-        if (association) {
-          association.set('cantDraw', null);
-          association.set('color', null);
-        }
-        person.set('cantDraw', null);
-        person.set('color', null);
-      })
-    }
   },
   _randomize(people, allowWishlisting, message) {
     this._reset(people);

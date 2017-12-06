@@ -8,5 +8,11 @@
     {{input value=email}}
   </div>
 
-  <button {{action "savePerson" name email}} disabled={{this.validations.isInvalid}}>Add To List</button>
+  <div class="form-group m-t-l">
+    <button {{action "savePerson" name email}} disabled={{this.validations.isInvalid}} class="btn-primary">Add To List</button>
+    {{#if showSendLink}}
+      {{#link-to 'select-pairs' class="btn-primary"}}Next{{/link-to}}
+    {{/if}}
+
+  </div>
 </form>
