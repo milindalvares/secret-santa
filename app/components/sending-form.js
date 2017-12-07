@@ -2,10 +2,13 @@ import Component from '@ember/component';
 import EmberObject, { computed, observer, get, set } from "@ember/object";
 
 export default Component.extend({
-  classNames: ['sending-form'],
+  classNames: ['sending-form', 'paper-stack'],
+  error: false,
   actions: {
     randomize(people, allowWishlisting, message) {
       set(this, 'isSending', true);
+      set(this, 'error', false);
+      this._reset(people);
       this._randomize(people, allowWishlisting, message);
     },
     reset(people) {
@@ -13,19 +16,15 @@ export default Component.extend({
     },
   },
   _randomize(people, allowWishlisting, message) {
-    this._reset(people);
-    const component = this;
     let payload = [];
     const peopleLength = people.get('length');
     people.sortBy('sortId').forEach((person, index) => {
-      person.set('sent_status', false);
       person.get('cantDraw').then(cantDraw => {
           let randModel = this._getRandomModel(people.filterBy('available').removeObject(person).removeObject(cantDraw));
           if (randModel !== undefined) {
             randModel.set('available', false);
-
+            console.log(randModel.get('name'));
             person.set('assigned', randModel.get('name'));
-
             person.save().then(() => {
               randModel.save().then(() => {
                 let data = {};
@@ -38,26 +37,36 @@ export default Component.extend({
                 }
                 payload.pushObject(data);
                 if (index + 1 === peopleLength) {
-                  $.ajax({
-                  	type: 'POST',
-                  	data: {payload: payload},
-                  	url: "http://128.199.218.232:89/secretsanta/",
-                  	success: function(response) {
-                      set(component, 'isSending', false);
-                      component.attrs.success();
-                  	},
-                  	error: function(error) {
-                      console.log(error, 'error');
-                  	}
-                  });
+                  if (!get(this, 'error')) {
+                    console.log('test', index, peopleLength);
+                    console.log(payload);
+                  }
+                  // this._sendPayload(payload);
                 }
               });
             });
 
           } else {
-            this._randomize(people);
+            set(this, 'error', true);
+            set(this, 'isSending', false);
+            // this._randomize(people, allowWishlisting, message);
           }
       });
+    });
+  },
+  _sendPayload(payload) {
+    const component = this;
+    $.ajax({
+    	type: 'POST',
+    	data: {payload: payload},
+    	url: "http://128.199.218.232:89/secretsanta/",
+    	success: function(response) {
+        set(component, 'isSending', false);
+        component.attrs.success();
+    	},
+    	error: function(error) {
+        console.log(error, 'error');
+    	}
     });
   },
   _getRandomModel(people) {
@@ -70,5 +79,6 @@ export default Component.extend({
       person.set('available', true);
       person.set('sortId', Math.floor(Math.random() * 500));
     });
+    return people;
   },
 });

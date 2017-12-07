@@ -148,7 +148,7 @@ h3 {
   color: white;
   text-shadow: 0 2px 4px 0 rgba(0,0,0,0.30);
   padding: 12px 25px;
-  transition-duration: 400ms;
+  transition-duration: 200ms;
   text-decoration: none;
   display: inline-block;
   @media (max-width: 414px) {
@@ -163,6 +163,11 @@ h3 {
   &.btn-small {
     font-size: 16px;
     padding: 4px 12px 5px;
+  }
+  &:active {
+    transition-duration: 0;
+    background: darken($red, 5%);
+    transform: translateY(4px);
   }
 }
 
@@ -222,6 +227,7 @@ input, textarea {
   background: white;
   border-radius: 4px;
   padding: 10px 15px;
+  color: #3D403D;
 }
 
 textarea {
@@ -255,13 +261,12 @@ textarea {
       color: $dark;
     }
   }
-
   .preview-block {
     font-family: $fontNormal;
     text-align: left;
     p {
       margin-bottom: 15px;
-      font-size: 18px;
+      font-size: 20px;
       line-height: 130%;
     }
     strong {
@@ -270,27 +275,46 @@ textarea {
   }
 }
 
+.paper-stack {
+  box-shadow: 0 0.0625em 0.1875em 0 rgba(0, 0, 0, 0.1), 0 0.5em 0 -0.25em #f2f2f2, 0 0.5em 0.1875em -0.25em rgba(0, 0, 0, 0.1), 0 1em 0 -0.5em #e5e5e5, 0 1em 0.1875em -0.5em rgba(0, 0, 0, 0.1);
+}
+
+.sending-form {
+  textarea {
+    border-left: 5px solid lighten($dark, 70%);
+    padding-left: 15px;
+    height: 25px;
+    margin-bottom: 15px;
+
+    &:focus {
+      resize: vertical;
+    }
+  }
+}
+
 .preview-label {
   font-family: $fontNormal;
   font-size: 14px;
   text-transform: uppercase;
-  color: #aaa;
+  color: lighten($dark, 60%);
   letter-spacing: 1px;
   margin-bottom: 10px;
   display: block;
 }
 
 textarea {
-
   text-align: left;
   border: none;
   // border-bottom: 1px solid #ddd;
   resize: none;
   border-radius: 0;
   padding: 0;
-  font-size: 18px;
+  font-size: 20px;
   font-family: $fontNormal;
   background: none;
+  &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: lighten($dark, 70%);
+  }
   &:focus {
     outline: none;
     // border-bottom: 1px solid transparentize($red, 0.8);
@@ -394,5 +418,16 @@ button {
   to {
     transform: scale(2.5);
     opacity: 0;
+  }
+}
+
+.error {
+  margin-top: 15px;
+  background: $red;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  a {
+    color: white;
   }
 }

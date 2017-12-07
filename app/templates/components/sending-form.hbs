@@ -1,19 +1,24 @@
   <div class="preview-block">
     <span class="preview-label">Message Preview</span>
-    <p class="preview">Hi, you are secret santa to [{{model.firstObject.name}}].</p>
+    <p class="preview">Hi, you are secret santa to <span class="santa-name">{{model.firstObject.name}}</span>. They've been nice this year so make it extra special.</p>
     {{#if allowWishlisting}}
-    <p class="preview">You also have a secret santa of your own! You can't know who they are but you can write them a wishlist by clicking this link.</p>
+    <p class="preview">Don't forget, you also have a secret santa of your own! You can't know who they are but you can write them a wishlist by clicking this link.</p>
     {{/if}}
     {{textarea value=message placeholder="Write optional message here…" class="form-control"}}
   </div>
-  <div>
-    <label>
-      {{input type="checkbox" checked=allowWishlisting}} Allow Wishlisting <a href="http://hashcooki.es/journal/secret-santa">(what's this?)</a>
-    </label>
-  </div>
-  <button {{action "randomize" model allowWishlisting message}} class="btn btn-primary">
-    {{#if isSending}}
-      <div class="sonar-emitter"></div> Sending
-    {{else}}
-      Randomize and Send!
-    {{/if}}</button>
+<div>
+  <label>
+    {{input type="checkbox" checked=allowWishlisting}} Allow <em>Santees</em> to secretly connect with their Santas?
+  </label>
+</div>
+<button {{action "randomize" model allowWishlisting message}} class="btn btn-primary">
+  {{#if isSending}}
+    <div class="sonar-emitter"></div> Sending
+  {{else}}
+    Randomize and Send!
+  {{/if}}
+</button>
+
+{{#if error}}
+  <p class="error">Sorry, the randomizer failed to work this once. Try another role at the dice, or {{#link-to 'select-pairs'}}alter your list pairings to be less strict{{/link-to}}.</p>
+{{/if}}
