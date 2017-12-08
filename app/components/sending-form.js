@@ -23,7 +23,6 @@ export default Component.extend({
           let randModel = this._getRandomModel(people.filterBy('available').removeObject(person).removeObject(cantDraw));
           if (randModel !== undefined) {
             randModel.set('available', false);
-            console.log(randModel.get('name'));
             person.set('assigned', randModel.get('name'));
             person.save().then(() => {
               randModel.save().then(() => {
@@ -38,10 +37,8 @@ export default Component.extend({
                 payload.pushObject(data);
                 if (index + 1 === peopleLength) {
                   if (!get(this, 'error')) {
-                    console.log('test', index, peopleLength);
-                    console.log(payload);
+                    this._sendPayload(payload);
                   }
-                  // this._sendPayload(payload);
                 }
               });
             });
